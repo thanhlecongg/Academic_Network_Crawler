@@ -4,8 +4,6 @@ import pprint
 import random
 import re
 import time
-import scholarly
-
 import arrow
 import bibtexparser
 import requests
