@@ -61,6 +61,8 @@ class Publication(object):
             if 'Cited by' in link.text:
                 self.citedby = int(re.findall(r'\d+', link.text)[0])
                 self.id_scholarcitedby = re.findall(_SCHOLARPUBRE, link['href'])[0]
+                print(self.citedby)
+                print(self.id_scholarcitedby)
         if __data.find('div', class_='gs_ggs gs_fl'):
             self.bib['eprint'] = __data.find('div', class_='gs_ggs gs_fl').a['href']
 
@@ -102,6 +104,7 @@ def search_publication_bytitle(title):
     """Search by scholar query and return a generator of Publication objects"""
     url = _PUBSEARCH.format(requests.utils.quote(title))
     soup = get_soup(_HOST + url)
+    print(soup)
     return search_scholar_soup(soup)
 
 if __name__ == '__main__':
