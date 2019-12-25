@@ -91,7 +91,7 @@ def search_scholar_soup(soup):
     """Generator that returns Publication objects from the search page"""
     while True:
         for row in soup.find_all('div', 'gs_or'):
-            yield Publication(row, 'scholar')
+            yield Publication(row)
         if soup.find(class_='gs_ico gs_ico_nav_next'):
             url = soup.find(class_='gs_ico gs_ico_nav_next').parent['href']
             soup = get_soup(_HOST+url)
